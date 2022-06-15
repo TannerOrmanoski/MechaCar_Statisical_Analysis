@@ -25,3 +25,17 @@ lot_summary <- suspension_coil %>% group_by(Manufacturing_Lot) %>% summarize(Mea
                                                                             Median_PSI=median(PSI),
                                                                             Variance_PSI=var(PSI),
                                                                             StandardDev_PSI=sd(PSI), .groups = "keep") 
+
+## Deliverable 3
+
+#create a t.test() to determine if the PSI of all lots is statistically different
+t.test(suspension_coil$PSI,mu=1500)
+
+#use t.test() for each individual lot
+lot1 <- subset(suspension_coil, Manufacturing_Lot=="Lot1")
+lot2 <- subset(suspension_coil, Manufacturing_Lot=="Lot2")
+lot3 <- subset(suspension_coil, Manufacturing_Lot=="Lot3")
+
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)
